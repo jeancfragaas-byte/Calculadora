@@ -1,5 +1,5 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { 
   FormData, 
   CalculationResult
@@ -127,13 +127,13 @@ const App: React.FC = () => {
           </div>
           <h2 className="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">SerSocial - Calculadora de Vantagem</h2>
           <p className="text-xl text-gray-600 max-w-2xl mb-12 leading-relaxed">
-            A ferramenta estratégica para assistentes sociais decidirem o próximo passo da carreira com base em dados.
+            A ferramenta estratégica para assistentes sociais decidirem o próximo passo da carreira com base em critérios técnicos e pessoais.
           </p>
           <button 
             onClick={() => setView('FORM')}
             className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-5 px-14 rounded-2xl shadow-xl transform transition hover:-translate-y-1 active:scale-95 text-xl"
           >
-            Iniciar Minha Análise
+            Começar Análise
           </button>
         </div>
       )}
@@ -179,7 +179,7 @@ const App: React.FC = () => {
             </div>
             <div className="flex items-center gap-2 pt-6">
               <input type="checkbox" name="cadastroReserva" checked={formData.cadastroReserva} onChange={handleInputChange} id="cr" className="w-5 h-5 accent-emerald-600" />
-              <label htmlFor="cr" className="text-sm font-bold text-gray-600 uppercase">Possui Cadastro Reserva?</label>
+              <label htmlFor="cr" className="text-sm font-bold text-gray-600 uppercase">Cadastro Reserva?</label>
             </div>
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-gray-500 uppercase">Dificuldade da Banca</label>
@@ -192,7 +192,7 @@ const App: React.FC = () => {
               </select>
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-xs font-bold text-gray-500 uppercase">Probabilidade de Nomeação</label>
+              <label className="text-xs font-bold text-gray-500 uppercase">Probabilidade Nomeação</label>
               <select name="probabilidadeNomeacao" value={formData.probabilidadeNomeacao} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
                 <option value="Baixa">Baixa</option>
                 <option value="Média">Média</option>
@@ -204,27 +204,27 @@ const App: React.FC = () => {
               <select name="estruturaTrabalho" value={formData.estruturaTrabalho} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
                 <option value="Boa">Boa (Órgão estruturado)</option>
                 <option value="Regular">Regular</option>
-                <option value="Precária">Precária (Falta equipe/espaço)</option>
+                <option value="Precária">Precária</option>
               </select>
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-xs font-bold text-gray-500 uppercase">Competitividade Estimada</label>
+              <label className="text-xs font-bold text-gray-500 uppercase">Competitividade</label>
               <select name="competitividade" value={formData.competitividade} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
-                <option value="Baixo">Baixo (Concurso regionalizado)</option>
+                <option value="Baixo">Baixo (Regional)</option>
                 <option value="Médio">Médio</option>
-                <option value="Alto">Alto (Concurso nacional/massa)</option>
+                <option value="Alto">Alto (Nacional)</option>
               </select>
             </div>
           </FormStep>
 
           <FormStep 
             stepNumber={2} 
-            title="SEU PERFIL DE CANDIDATO (BLOCO B)" 
+            title="SEU PERFIL (BLOCO B)" 
             icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>}
           >
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-gray-500 uppercase flex items-center">
-                Nível de Preparação <Tooltip text="Avançado: Domina Seguridade/Ética/Fundamentos e foca em simulados." />
+                Nível de Preparação <Tooltip text="Avançado: Domina a base e foca em simulados." />
               </label>
               <select name="nivelPreparacao" value={formData.nivelPreparacao} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
                 <option value="Iniciante">Iniciante</option>
@@ -245,39 +245,37 @@ const App: React.FC = () => {
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-gray-500 uppercase">Experiência Prévia</label>
               <select name="experienciaPrevia" value={formData.experienciaPrevia} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
-                <option value="Nenhuma">Nenhuma experiência na área</option>
-                <option value="Alguma">Alguma experiência</option>
-                <option value="Ampla">Ampla experiência profissional</option>
+                <option value="Nenhuma">Nenhuma</option>
+                <option value="Alguma">Alguma</option>
+                <option value="Ampla">Ampla</option>
               </select>
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-xs font-bold text-gray-500 uppercase">Distância Geográfica</label>
+              <label className="text-xs font-bold text-gray-500 uppercase">Distância</label>
               <select name="distancia" value={formData.distancia} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
                 <option value="Mesma cidade">Mesma cidade</option>
-                <option value="Região próxima">Cidade próxima/Região</option>
+                <option value="Região próxima">Região próxima</option>
                 <option value="Outro estado">Outro estado</option>
               </select>
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-xs font-bold text-gray-500 uppercase flex items-center">
-                Interesse na Área <Tooltip text="O quanto você se identifica com a política setorial (Saúde, Judiciário, Assistência, etc)." />
-              </label>
+              <label className="text-xs font-bold text-gray-500 uppercase">Interesse na Área</label>
               <select name="interesse" value={formData.interesse} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
-                <option value="Baixo">Baixo (Apenas pela estabilidade)</option>
+                <option value="Baixo">Baixo</option>
                 <option value="Médio">Médio</option>
-                <option value="Alto">Alto (Área de atuação dos sonhos)</option>
+                <option value="Alto">Alto</option>
               </select>
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-xs font-bold text-gray-500 uppercase">Familiaridade com a Banca</label>
+              <label className="text-xs font-bold text-gray-500 uppercase">Familiaridade Banca</label>
               <select name="familiaridadeBanca" value={formData.familiaridadeBanca} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
                 <option value="Nenhuma">Nenhuma</option>
-                <option value="Pouca">Pouca (Conhece o estilo)</option>
-                <option value="Muita">Muita (Já fez várias provas)</option>
+                <option value="Pouca">Pouca</option>
+                <option value="Muita">Muita</option>
               </select>
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-xs font-bold text-gray-500 uppercase">Domínio de Conteúdo</label>
+              <label className="text-xs font-bold text-gray-500 uppercase">Domínio Conteúdo</label>
               <select name="dominioConteudo" value={formData.dominioConteudo} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
                 <option value="Baixo">Baixo</option>
                 <option value="Médio">Médio</option>
@@ -303,22 +301,22 @@ const App: React.FC = () => {
               <select name="prioridadeFinanceira" value={formData.prioridadeFinanceira} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
                 <option value="Baixa">Baixa</option>
                 <option value="Média">Média</option>
-                <option value="Alta">Alta (Urgência de nova fonte de renda)</option>
+                <option value="Alta">Alta</option>
               </select>
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-xs font-bold text-gray-500 uppercase">Tolerância à Sobrecarga</label>
+              <label className="text-xs font-bold text-gray-500 uppercase">Tolerância Sobrecarga</label>
               <select name="toleranciaSobrecarga" value={formData.toleranciaSobrecarga} onChange={handleInputChange} className="border-2 border-gray-200 rounded-xl p-3 bg-white outline-none focus:border-emerald-500 transition">
-                <option value="Baixa">Baixa (Pode comprometer saúde)</option>
+                <option value="Baixa">Baixa</option>
                 <option value="Média">Média</option>
-                <option value="Alta">Alta (Suporta ritmos intensos)</option>
+                <option value="Alta">Alta</option>
               </select>
             </div>
           </FormStep>
 
           <div className="flex justify-center py-8">
-            <button type="submit" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-5 px-16 rounded-2xl shadow-xl transform transition hover:-translate-y-1 active:scale-95 text-xl flex items-center gap-3">
-              Calcular Vantagem SerSocial
+            <button type="submit" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-5 px-16 rounded-2xl shadow-xl transform transition hover:-translate-y-1 active:scale-95 text-xl">
+              Calcular Vantagem
             </button>
           </div>
         </form>
@@ -326,12 +324,9 @@ const App: React.FC = () => {
 
       {view === 'LOADING' && (
         <div className="flex flex-col items-center justify-center py-32 text-center animate-fade-in">
-          <div className="mb-12 relative">
-             <div className="absolute inset-0 bg-emerald-500/10 blur-3xl rounded-full scale-150 animate-pulse"></div>
-             <LogoSerSocial size={180} animate={true} />
-          </div>
-          <h3 className="text-3xl font-black text-gray-900 mb-4">{loadingText}</h3>
-          <div className="w-64 h-2 bg-gray-100 rounded-full mx-auto overflow-hidden border border-gray-200">
+          <LogoSerSocial size={180} animate={true} />
+          <h3 className="text-3xl font-black text-gray-900 mt-8 mb-4">{loadingText}</h3>
+          <div className="w-64 h-2 bg-gray-100 rounded-full mx-auto overflow-hidden">
             <div className="h-full bg-emerald-600 animate-[loading_2.4s_ease-in-out_forwards] origin-left"></div>
           </div>
           <style dangerouslySetInnerHTML={{ __html: `@keyframes loading { 0% { transform: scaleX(0); } 100% { transform: scaleX(1); } }` }} />
@@ -345,43 +340,42 @@ const App: React.FC = () => {
               result.classificacao === 'Alta vantagem' ? 'bg-emerald-600' : 
               result.classificacao === 'Vantagem moderada' ? 'bg-amber-500' : 'bg-rose-600'
             }`}>
-              <span className="text-sm uppercase tracking-widest font-black opacity-80">Índice de Vantagem do Concurso</span>
+              <span className="text-sm uppercase tracking-widest font-black opacity-80">Índice SerSocial</span>
               <h3 className="text-9xl font-black mt-4 mb-6 leading-none">{result.ivc}</h3>
-              <div className="inline-flex items-center gap-3 bg-black/10 px-8 py-3 rounded-full text-2xl font-black uppercase tracking-tight">
+              <div className="inline-block bg-black/10 px-8 py-3 rounded-full text-2xl font-black uppercase">
                 {result.classificacao}
               </div>
             </div>
             
             <div className="p-10">
               <div className="mb-10 bg-emerald-50 border-l-8 border-emerald-500 p-8 rounded-r-2xl">
-                <h4 className="text-emerald-900 font-black text-xl mb-2">Parecer Estratégico:</h4>
                 <p className="text-emerald-900 text-lg leading-relaxed italic">"{result.analiseEstrategica}"</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                   <h5 className="font-black text-emerald-700 mb-4 uppercase text-xs border-b border-emerald-100 pb-2">Fortalezas</h5>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2">
                     {result.pontosFortes.map((p, i) => <li key={i} className="text-xs font-bold text-gray-700 flex gap-2">🟢 {p}</li>)}
                   </ul>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                   <h5 className="font-black text-rose-700 mb-4 uppercase text-xs border-b border-rose-100 pb-2">Fragilidades</h5>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2">
                     {result.pontosNegativos.map((p, i) => <li key={i} className="text-xs font-bold text-gray-700 flex gap-2">🔴 {p}</li>)}
                   </ul>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                   <h5 className="font-black text-amber-700 mb-4 uppercase text-xs border-b border-amber-100 pb-2">Atenção</h5>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2">
                     {result.pontosAtencao.map((p, i) => <li key={i} className="text-xs font-bold text-gray-700 flex gap-2">🟡 {p}</li>)}
                   </ul>
                 </div>
               </div>
 
               <div className="mt-12 flex flex-col md:flex-row gap-4 justify-center">
-                <button onClick={reset} className="px-10 py-5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl shadow-xl transition transform hover:-translate-y-1">Nova Simulação</button>
-                <button onClick={() => setView('FORM')} className="px-10 py-5 bg-white border-2 border-gray-200 text-gray-600 font-black rounded-2xl hover:border-emerald-600 transition">Revisar Dados</button>
+                <button onClick={reset} className="px-10 py-5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl shadow-xl transition transform hover:-translate-y-1">Nova Análise</button>
+                <button onClick={() => setView('FORM')} className="px-10 py-5 bg-white border-2 border-gray-200 text-gray-600 font-black rounded-2xl hover:border-emerald-600 transition">Ajustar Dados</button>
               </div>
             </div>
           </div>
